@@ -1,0 +1,135 @@
+<div class="container">
+  <div class="row">
+  <div class="col-sm-8">
+    <h1 id="title" class="title">{{title}}: {{user.name}}</h1>
+    <form (ngSubmit)="update()" #form="ngForm" class="was-validated col-md-7">
+
+        
+      <div class="form-group">
+        <label class="label" for="input-name">Name:</label>
+        <input [(ngModel)]="user.name"
+               #name="ngModel"
+               id="input-name"
+               class="form-control" 
+               name="name"
+               placeholder="Name"
+               autofocus
+               fullWidth
+               fieldSize="large"
+               minlength="4"
+               maxlength="15"
+               [attr.aria-invalid]="name.invalid && name.touched ? true : null"
+               required>
+        <ng-container *ngIf="name.invalid && name.touched">
+          <p class="invalid-feedback" *ngIf="name.errors?.required">
+            Full name is required!
+          </p>
+          <p class="invalid-feedback" *ngIf="name.errors?.minlength || name.errors?.maxlength">
+            Full name should contains
+            from 
+            to 
+            characters              
+          </p>
+      </ng-container>
+      </div>
+      <div class="form-group">
+        <label class="label" for="input-surname">Apellidos:</label>
+        <input [(ngModel)]="user.surname"
+               #surname="ngModel"
+               id="input-surname"
+               class="form-control" 
+               name="surname"
+               placeholder="surname"
+               autofocus
+               fullWidth
+               fieldSize="large"
+               minlength="4"
+               maxlength="15"
+               [attr.aria-invalid]="surname.invalid && surname.touched ? true : null"
+               required>
+        <ng-container *ngIf="surname.invalid && surname.touched">
+          <p class="invalid-feedback" *ngIf="surname.errors?.required">
+            Full name is required!
+          </p>
+          <p class="invalid-feedback" *ngIf="surname.errors?.minlength || surname.errors?.maxlength">
+            Full name should contains
+            from 
+            to 
+            characters              
+          </p>
+      </ng-container>
+      </div>              
+
+    
+      <div class="form-group">
+        <label for="input-email">Email address:</label>
+        <input [(ngModel)]="user.email"
+                type="email"
+               #emailR="ngModel"
+               id="input-email"
+               name="email"
+               class="form-control"
+               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+               placeholder="Email address"
+               required>
+        <ng-container *ngIf="emailR.invalid && emailR.touched">
+          <p class="invalid-feedback" *ngIf="emailR.errors?.required">
+            Email is required!
+          </p>
+          <p class="invalid-feedback" *ngIf="emailR.errors?.pattern">
+            Email should be the real one!
+          </p>
+        </ng-container>
+      </div>
+       <!--
+      <div class="form-group">
+        <label class="label" for="input-password">Password:</label>
+        <input [(ngModel)]="user.password"
+               #password="ngModel"
+               type="password"
+               class="form-control"
+               id="input-password"
+               name="password"
+               placeholder="Password"
+               minlength="4"
+               maxlength="10"
+               required>
+               <ng-container *ngIf="password.invalid && password.touched">
+                <p class="invalid-feedback" *ngIf="password.errors?.required">
+                  Password is required!
+                </p>
+                <p class="invalid-feedback" *ngIf="password.errors?.minlength || password.errors?.maxlength">
+                  Password should contain
+                  characters
+                </p>
+              </ng-container>
+      </div>
+    -->
+    
+    <div class="form-group">
+      <label for="id-img">Sube tu foto:</label>
+      <input type="file" class="form-control-file border" id="id-img" 
+             name="file" (change) = "fileChangeEvent($event)">
+      </div>
+        <button type="submit" class="btn btn-primary btn-block">Updating
+        </button>
+  </form>
+</div>
+<div class="col-sm-4">
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr>
+      <ng-container *ngIf="user.image && user.image != 'null'">
+        <div class="image-for-edit">
+          <img src="{{url + '/users/getImage/' + user.image}}" style="width: 50px;">
+        </div>
+      </ng-container>
+        <div class="alert alert-success">
+            <strong>Message!</strong> {{alert_message}}.
+        </div>
+  
+</div>
+</div>
+</div>

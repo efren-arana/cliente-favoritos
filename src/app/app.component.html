@@ -1,0 +1,71 @@
+<div class="clearfix"></div>
+<div class="col-lg-12">
+    <div class="col-lg-6">
+        <h1>Identificate</h1>
+    <form (ngSubmit) = "login()" #loginForm = "ngForm" class="was-validated col-md-7">
+    <div class="form-group">
+      <label for="uname">Username or email:</label>
+      <input #email = "ngModel"
+             [(ngModel)]="user.email"
+             class="form-control" 
+             id="uname" 
+             placeholder="Enter username" 
+             name="uname" 
+             pattern=".+@.+\..+"
+             required>
+            <ng-container *ngIf="email.invalid && email.touched">
+                <p class="invalid-feedback" *ngIf="email.errors?.required">
+                  Email is required!
+                </p>
+                <p class="invalid-feedback" *ngIf="email.errors?.pattern">
+                  Email should be the real one!
+                </p>
+            </ng-container>
+    </div>
+    <div class="form-group">
+        
+        <span class="label-with-link">
+            <label class="label" for="pwd">Password:</label><br>
+            <a class="forgot-password caption-2" routerLink="../request-password">Forgot Password?</a>
+          </span>
+      <input type="password" 
+             class="form-control"            
+             #password="ngModel"
+             [(ngModel)]="user.password"
+             id="pwd" 
+             placeholder="Enter password" 
+             name="pswd" 
+             minlength="4" 
+             maxlength="10"
+             required>
+    <ng-container *ngIf="password.invalid && password.touched ">
+       <p class="invalid-feedback" *ngIf="password.errors?.required">
+         Password is required!
+       </p>
+       <p class="invalid-feedback" *ngIf="password.errors?.minlength || password.errors?.maxlength">
+         Password should contain
+         characters
+       </p>
+     </ng-container>
+    </div>
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" 
+                type="checkbox" 
+                name="remember"
+                *ngIf="!rememberMe"
+                [(ngModel)]="user.rememberMe"
+                required> Remember me
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Check this checkbox to continue.</div>
+      </label>
+    </div>
+    <button type="submit" 
+            class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="col-lg-6">
+    <h1 id="title" class="title">Register</h1>
+    
+</div>
+</div>

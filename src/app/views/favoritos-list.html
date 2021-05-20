@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<div class="loading" *ngIf = "loading">
+    <img src="../../assets/images/loader.gif">
+</div>
+    <!-- (Union) por interpolacion AngularJS-->
+    <strong>{{title}}</strong>
+    <ul id="favoritos-list" *ngIf = "!loading">
+        <li *ngFor="let favorito of favoritos" class="favorito-item">
+            <div class="content-data">
+                <h4>{{favorito.title}}</h4> 
+                <p class="url" style="color:black;">{{favorito.url}}</p>
+           <br>
+            <p class="buttons">
+                <a href="{{favorito.url}}" target="_blank" class="btn btn-default">
+                    Ir al Marcador
+                </a>
+                <a [routerLink] = "['marcador/',favorito._id]" target="_self" class="btn btn-ver">
+                    Ver
+                </a>
+                <a [routerLink] = "['/edit-marcador',favorito._id]" target="_self" class="btn btn-editar">
+                    Editar
+                </a>
+                <a (click) = "onBorrarFavorito(favorito._id)" class="btn btn-eliminar">
+                    Eliminar
+                </a>
+            </p>
+            </div>
+        </li>
+    </ul>
+<!--
+<br>
+Cambiar Color: <input type="text" (blur) = "changeColor()" [(ngModel)]= "color"/>
+<div class="container" [style.background] = "color" [ngClass]="['bordeVerde','fondoAmarillo']">
+    <form>
+        <div><ng-container *ngIf="flagFavorito; then thenBlock else elseBlock"></ng-container></div>
+
+        <ng-template #thenBlock>
+            <input type="submit" (click) ="hideFavoritos()" value="Ocultar favoritos">
+            
+        </ng-template>
+        <ng-template #elseBlock>
+            <input type="submit" (click) ="showFavoritos()" value="Mostrar favoritos">
+        </ng-template>
+        <ul id="favoritos" *ngIf="flagFavorito">
+            <li *ngFor="let favorito of favoritos">{{favorito}}</li>
+        </ul>
+    </form>
+</div>
+-->

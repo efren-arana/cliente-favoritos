@@ -1,0 +1,24 @@
+<!--Binding (Union) por interpolacion AngularJS-->
+    <header id="header">
+      <a href="#" >
+        <img src="../../assets/images/angular.png" id="logo">
+      </a>
+        
+        <div class="title-subtitle">
+          <h1><a [routerLink] = "['/']">{{title}}</a></h1>
+          <p style="display: none;" class="subtitle">{{description}}</p>
+        </div>
+        <a class="btn-add-favorito" [routerLink] = "['/crear-marcador']">
+          Crear Favorito
+        </a>
+        <!--<button class="btn-add-favorito" (click)="toggle()">Display</button>-->
+        <div class="clearFix"></div>
+    </header>
+    
+     
+    <section class="main">
+       <!--Listado de marcadores Componentes-->
+       <!--<favoritos-list></favoritos-list>-->
+       <router-outlet></router-outlet>
+       <div class="clearFix"></div>
+    </section>

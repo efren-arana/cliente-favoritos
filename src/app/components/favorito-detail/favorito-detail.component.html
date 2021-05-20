@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorito Detail</title>
+</head>
+<body>
+    <div class="favorito-box" *ngIf="favorito">
+        <h1>{{favorito.title}}</h1>
+        <br>
+        <p class="url" style="color: black;">{{favorito.url}}</p>
+        <br>
+        <p class="description" style="color: black;">{{favorito.description}}</p>
+    </div>
+</body>
+</html>
